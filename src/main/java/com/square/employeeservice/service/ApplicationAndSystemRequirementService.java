@@ -2,10 +2,16 @@ package com.square.employeeservice.service;
 
 import com.square.employeeservice.dto.ApplicationAndSystemRequirementDto;
 import com.square.employeeservice.model.ApplicationAndSystemRequirement;
+import com.square.employeeservice.model.Employee;
+import com.square.employeeservice.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ApplicationAndSystemRequirementService {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
     public ApplicationAndSystemRequirement convertDtoToEntity(ApplicationAndSystemRequirementDto dto) {
         ApplicationAndSystemRequirement applicationAndSystemRequirement = new ApplicationAndSystemRequirement();
         applicationAndSystemRequirement.setAcs(dto.getAcs());
@@ -26,7 +32,8 @@ public class ApplicationAndSystemRequirementService {
         applicationAndSystemRequirement.setCreatedBy(dto.getCreatedBy());
         applicationAndSystemRequirement.setModifiedDate(dto.getModifiedDate());
         applicationAndSystemRequirement.setModifiedBy(dto.getModifiedBy());
-        applicationAndSystemRequirement.setEmployeeIdemployee(dto.getEmployeeIdemployee());
+        Employee employee = employeeRepository.findById(dto.getEmployeeIdemployee()).get();
+        applicationAndSystemRequirement.setEmployee(employee);
 
         return applicationAndSystemRequirement;
     }

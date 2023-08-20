@@ -37,7 +37,10 @@ public class ApplicationAndSystemRequirement {
     private String createdBy;
     private LocalDateTime modifiedDate;
     private String modifiedBy;
-    private Integer employeeIdemployee;
+
+    @OneToOne
+    @JoinColumn(name = "employeeIdemployee")
+    private Employee employee;
 
 
 

@@ -40,4 +40,20 @@ public class Employee {
     private String windowsUserAccount;
     private Integer hodUserIdUser;
 
+    @OneToOne(mappedBy = "employee")
+    private ApplicationAndSystemRequirement applicationAndSystemRequirement;
+
+    @OneToOne(mappedBy = "employee")
+    private TypeOfDevice typeOfDevice;
+
+    @OneToOne(mappedBy = "employee")
+    private Office365 office365;
+
+    @OneToOne(mappedBy = "employee")
+    private VirtualWorkingEnv virtualWorkingEnvironment;
+
+    @OneToOne(mappedBy = "employee")
+    private SupportToolsAndApplication supportToolsAndApplication;
+
+
 }

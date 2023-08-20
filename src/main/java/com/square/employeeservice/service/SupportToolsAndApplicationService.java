@@ -1,11 +1,16 @@
 package com.square.employeeservice.service;
 
 import com.square.employeeservice.dto.SupportToolsAndApplicationDto;
+import com.square.employeeservice.model.Employee;
 import com.square.employeeservice.model.SupportToolsAndApplication;
+import com.square.employeeservice.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SupportToolsAndApplicationService {
+    @Autowired
+    EmployeeRepository employeeRepository;
     public SupportToolsAndApplication convertDtoToEntity(SupportToolsAndApplicationDto dto) {
         SupportToolsAndApplication toolsAndApplication = new SupportToolsAndApplication();
         toolsAndApplication.setAirWatch(dto.getAirWatch());
@@ -19,7 +24,8 @@ public class SupportToolsAndApplicationService {
         toolsAndApplication.setCreatedBy(dto.getCreatedBy());
         toolsAndApplication.setModifiedDate(dto.getModifiedDate());
         toolsAndApplication.setModifiedBy(dto.getModifiedBy());
-        toolsAndApplication.setEmployeeIdemployee(dto.getEmployeeIdemployee());
+        Employee employee = employeeRepository.findById(dto.getEmployeeIdemployee()).get();
+        toolsAndApplication.setEmployee(employee);
 
         return toolsAndApplication;
     }

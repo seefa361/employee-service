@@ -1,8 +1,11 @@
 package com.square.employeeservice.service;
 
 import com.square.employeeservice.dto.TypeOfDeviceDto;
+import com.square.employeeservice.model.Employee;
 import com.square.employeeservice.model.TypeOfDevice;
+import com.square.employeeservice.repository.EmployeeRepository;
 import com.square.employeeservice.repository.TypeOfDeviceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,12 +13,11 @@ import java.util.List;
 @Service
 public class TypeOfDeviceService {
 
-    private final TypeOfDeviceRepository typeOfDeviceRepository;
+    @Autowired
+    EmployeeRepository employeeRepository;
+    @Autowired
+    TypeOfDeviceRepository typeOfDeviceRepository;
 
-
-    public TypeOfDeviceService(TypeOfDeviceRepository typeOfDeviceRepository) {
-        this.typeOfDeviceRepository = typeOfDeviceRepository;
-    }
 
     public List<TypeOfDevice> getTypeOfDevices(){
         return typeOfDeviceRepository.findAll();
@@ -35,7 +37,8 @@ public class TypeOfDeviceService {
         typeOfDevice.setCreatedBy(typeOfDeviceDto.getCreatedBy());
         typeOfDevice.setModifiedDate(typeOfDeviceDto.getModifiedDate());
         typeOfDevice.setModifiedBy(typeOfDeviceDto.getModifiedBy());
-        typeOfDevice.setEmployeeIdemployee(typeOfDeviceDto.getEmployeeIdemployee());
+        Employee employee = employeeRepository.findById(typeOfDeviceDto.getEmployeeIdemployee()).get();
+        typeOfDevice.setEmployee(employee);
 
         return typeOfDevice;
     }

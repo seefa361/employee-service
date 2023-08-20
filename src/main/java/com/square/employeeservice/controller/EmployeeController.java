@@ -85,5 +85,11 @@ public class EmployeeController {
         }
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<EmployeeDto>> searchEmployeesByParameters(EmployeeSearchDto searchDto) {
+        List<EmployeeDto> employees = employeeService.searchEmployeesByParameters(searchDto);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
 
 }

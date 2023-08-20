@@ -16,8 +16,6 @@ public class VirtualWorkingEnv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idvirtualWorkingEnv;
-
-    private Integer employeeIdemployee;
     private Byte avc;
     private Byte localCitrixLaptop;
     private Byte localCitrixPc;
@@ -26,4 +24,7 @@ public class VirtualWorkingEnv {
     private String createdBy;
     private LocalDateTime modifiedDate;
     private String modifiedBy;
+    @OneToOne
+    @JoinColumn(name = "employeeIdemployee")
+    private Employee employee;
 }

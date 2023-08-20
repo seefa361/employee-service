@@ -7,10 +7,12 @@ import com.square.employeeservice.repository.*;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -76,6 +78,26 @@ public class EmployeeService {
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException());
 
         return convertEntityToDto(employee);
+    }
+    public List<EmployeeDto> searchEmployeesByParameters(EmployeeSearchDto searchDto) {
+        // Create an example object for dynamic query
+        Example<Employee> example = Example.of(convertSearchDtoToEntity(searchDto));
+
+        List<Employee> employees = employeeRepository.findAll(example);
+        return employees.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
+    }
+
+    private Employee convertSearchDtoToEntity(EmployeeSearchDto searchDto) {
+        Employee employee = new Employee();
+        employee.setFirstName(searchDto.getFirstName());
+        employee.setMiddleName(searchDto.getMiddleName());
+        employee.setLastName(searchDto.getLastName());
+        employee.setEpfNo(searchDto.getEpfNo());
+        // ... set other fields based on the searchDto
+
+        return employee;
     }
 
     public Employee updateEmployeeDetails(Integer employeeId, EmployeeDto employeeDto) {
