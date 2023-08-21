@@ -10,19 +10,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class ApplicationAndSystemRequirementDto {
-    private Byte acs;
+    private Boolean acs;
     private String acsReplacementUserId;
-    private Byte ims;
+    private Boolean ims;
     private String imsUserRoleDetails;
-    private Byte acsReports;
-    private Byte emotor;
-    private Byte dmsMotor;
-    private Byte dmsNonMotor;
-    private Byte dm;
-    private Byte finsFinder;
-    private Byte acsi;
-    private Byte photoCloud;
-    private Byte dmsOld;
+    private Boolean acsReports;
+    private Boolean emotor;
+    private Boolean dmsMotor;
+    private Boolean dmsNonMotor;
+    private Boolean dm;
+    private Boolean finsFinder;
+    private Boolean acsi;
+    private Boolean photoCloud;
+    private Boolean dmsOld;
     private String anyOther;
     private LocalDateTime createdDate;
     private String createdBy;

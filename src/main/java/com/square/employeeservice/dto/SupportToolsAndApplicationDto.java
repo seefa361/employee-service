@@ -10,13 +10,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class SupportToolsAndApplicationDto {
-    private Byte airWatch;
-    private Byte microsoftTeam;
-    private Byte trainingAccess;
-    private Byte intranetAccess;
-    private Byte serviceNowPortal;
-    private Byte myAliciaPortal;
-    private Byte shareFolderAccess;
+    private Boolean airWatch;
+    private Boolean microsoftTeam;
+    private Boolean trainingAccess;
+    private Boolean intranetAccess;
+    private Boolean serviceNowPortal;
+    private Boolean myAliciaPortal;
+    private Boolean shareFolderAccess;
     private LocalDateTime createdDate;
     private String createdBy;
     private LocalDateTime modifiedDate;

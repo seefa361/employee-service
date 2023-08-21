@@ -14,15 +14,38 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class VirtualWorkingEnv {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "virtual-working-env-seq",
+            sequenceName = "virtual-working-env-seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "virtual-working-env-seq"
+    )
     private Integer idvirtualWorkingEnv;
-    private Byte avc;
-    private Byte localCitrixLaptop;
-    private Byte localCitrixPc;
-    private Byte vpnCallCenter;
+    @Column(name = "avc", nullable = false)
+    private boolean avc;
+
+    @Column(name = "local_citrix_laptop", nullable = false)
+    private boolean localCitrixLaptop;
+
+    @Column(name = "local_citrix_pc", nullable = false)
+    private boolean localCitrixPc;
+
+    @Column(name = "vpn_call_center", nullable = false)
+    private boolean vpnCallCenter;
+
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
+
+    @Column(name = "created_by")
     private String createdBy;
+
+    @Column(name = "modified_date")
     private LocalDateTime modifiedDate;
+
+    @Column(name = "modified_by")
     private String modifiedBy;
     @OneToOne
     @JoinColumn(name = "employeeIdemployee")

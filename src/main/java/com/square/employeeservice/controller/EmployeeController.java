@@ -3,8 +3,9 @@ package com.square.employeeservice.controller;
 import com.square.employeeservice.dto.*;
 import com.square.employeeservice.model.Employee;
 import com.square.employeeservice.model.TypeOfDevice;
-import com.square.employeeservice.model.VirtualWorkingEnv;
 import com.square.employeeservice.service.*;
+import com.square.employeeservice.service.impl.TypeOfDeviceServiceImpl;
+import com.square.employeeservice.service.impl.VirtualWorkingEnvServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,9 @@ import java.util.List;
 @RequestMapping("/Employee")
 public class EmployeeController {
     @Autowired
-    TypeOfDeviceService typeOfDeviceService;
+    TypeOfDeviceServiceImpl typeOfDeviceService;
     @Autowired
-    VirtualWorkingEnvService virtualWorkingEnvService;
+    VirtualWorkingEnvServiceImpl virtualWorkingEnvService;
     @Autowired
     EmployeeService employeeService;
 
@@ -85,11 +86,8 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<EmployeeDto>> searchEmployeesByParameters(EmployeeSearchDto searchDto) {
-        List<EmployeeDto> employees = employeeService.searchEmployeesByParameters(searchDto);
-        return new ResponseEntity<>(employees, HttpStatus.OK);
-    }
+
+
 
 
 }

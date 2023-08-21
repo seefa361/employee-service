@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 @Data
 public class TypeOfDeviceDto {
     private Integer idtypeOfDevice;
-    private Byte personalComputer;
-    private Byte laptopAndDataFacility;
-    private Byte thinClient;
-    private Byte phoneExtension;
-    private Byte deskPhone;
-    private Byte mobilePhone;
+    private Boolean personalComputer;
+    private Boolean laptopAndDataFacility;
+    private Boolean thinClient;
+    private Boolean phoneExtension;
+    private Boolean deskPhone;
+    private Boolean mobilePhone;
     private LocalDateTime createdDate;
     private String createdBy;
     private LocalDateTime modifiedDate;

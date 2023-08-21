@@ -27,7 +27,7 @@ public class EmployeeDto {
     private String dateOfJoining;
     private String systemAccessRequest;
     private String otherSpecificNotes;
-    private LocalDateTime lastWorkingDate;
+    private String lastWorkingDate;
     private String requirementDataBackups;
     private String emailDelegationRequirements;
     private String otherRequirements;

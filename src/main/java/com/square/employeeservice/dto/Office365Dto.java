@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class Office365Dto {
-    private Byte e1;
-    private Byte e3;
-    private Byte f3;
-    private Byte powerAutomate;
+    private Boolean e1;
+    private Boolean e3;
+    private Boolean f3;
+    private Boolean powerAutomate;
     private LocalDateTime createdDate;
     private String createdBy;
     private LocalDateTime modifiedDate;

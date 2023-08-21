@@ -10,10 +10,10 @@ import java.time.LocalDateTime;
 @Data
 public class VirtualWorkingEnvDto {
     private Integer employeeIdemployee;
-    private Byte avc;
-    private Byte localCitrixLaptop;
-    private Byte localCitrixPc;
-    private Byte vpnCallCenter;
+    private Boolean avc;
+    private Boolean localCitrixLaptop;
+    private Boolean localCitrixPc;
+    private Boolean vpnCallCenter;
     private LocalDateTime createdDate;
     private String createdBy;
     private LocalDateTime modifiedDate;
